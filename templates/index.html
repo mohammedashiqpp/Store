@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- top-brands -->
+	<div class="top-brands">
+		<div class="container">
+			<h3>Hot Offers</h3>
+			{% for i in prd %}
+
+			<div class="agile_top_brands_grids">
+				<div class="col-md-3 top_brand_left">
+					<div class="hover14 column">
+						<div class="agile_top_brand_left_grid">
+							<div class="tag"><img src="{% static 'images/tag.png'%}" alt=" " class="img-responsive" /></div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block" >
+										<div class="snipcart-thumb">
+
+											<a href={{i.get_url}}><img title=" " alt=" " src="{{i.image.url}}" /></a>
+											<p>{{i.name}}</p>
+											<h4>$7.99 <span>{{i.price}}</span></h4>
+										</div>
+
+										<div class="snipcart-details top_brand_home_details">
+											{% if i.stock <= 0 %}
+                    <h1 style="color:red;">OOOPS OUT OFSTOCK!</h1>
+                        {% else %}
+
+												<a href="{% url 'addcart' i.id %}"><input type="submit" name="submit" value="Add to cart" class="button" /></a>
+{% endif %}
+										</div>
+									</div>
+								</figure>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+{% endfor %}
+		</div>
+		<br>
+		 <center>
+    {% for p in pg.paginator.page_range %}
+
+
+      <a href="?page={{p}}" style="    background-color: white;
+    color: black;
+    border: 2px solid #04AA6D;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 20px; {% if pg.number == p %} active {% endif %}">{{p}} </a>
+         {% endfor %}
+    </center>
+		<br>
+		<br>
+
+<!-- //top-brands -->
+
+<!-- //fresh-vegetables -->
+<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="clearfix"> </div>
+			<div class="agile_footer_grids">
+				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
+					<div class="w3_footer_grid_bottom">
+						<h4>100% secure payments</h4>
+						<img src="{%static 'images/card.png'%}" alt=" " class="img-responsive" />
+					</div>
+				</div>
+				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
+					<div class="w3_footer_grid_bottom">
+						<h5>connect with us</h5>
+						<ul class="agileits_social_icons">
+							<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="wthree_footer_copy">
+				<p>© PP store</p>
+			</div>
+		</div>
+	</div>
+<!-- //footer -->
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+    $(".dropdown").hover(
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideDown("fast");
+            $(this).toggleClass('open');
+        },
+        function() {
+            $('.dropdown-menu', this).stop( true, true ).slideUp("fast");
+            $(this).toggleClass('open');
+        }
+    );
+});
+</script>
+<!-- here stars scrolling icon -->
+
+
+
+{% endblock %}

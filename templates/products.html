@@ -1,0 +1,489 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+<!-- //header -->
+<!-- products-breadcrumb -->
+	<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="/">Home</a><span>|</span></li>
+				<li>All products</li>
+			</ul>
+		</div>
+	</div>
+<!-- //products-breadcrumb -->
+<!-- banner -->
+	<div class="banner">
+		<div class="w3l_banner_nav_left">
+			<nav class="navbar nav_bottom">
+			 <!-- Brand and toggle get grouped for better mobile display -->
+			  <div class="navbar-header nav_2">
+				  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+			   </div>
+			   <!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav nav_1">
+						<li><a href="{% url 'product' %}">All product</a></li>
+						{% for i in cat %}
+						<li><a href="{{i.get_url}}">{{i.name}}</a></li>
+						{% endfor %}
+
+					</ul>
+				 </div><!-- /.navbar-collapse -->
+			</nav>
+		</div>
+		<div class="w3l_banner_nav_right">
+			<div class="w3l_banner_nav_right_banner3">
+				<h3>Best Deals For New Products<span class="blink_me"></span></h3>
+			</div>
+
+			<div class="w3ls_w3l_banner_nav_right_grid">
+				<h3>Popular Brands</h3>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>food</h6>
+					{% for i in prd %}
+					<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid_pos">
+								<img src="{% static 'images/tag.png'%}" alt=" " class="img-responsive" />
+							</div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block">
+										<div class="snipcart-thumb">
+											<a href="{{i.get_url}}"><img src="{{i.image.url}}" alt=" " class="img-responsive" /></a>
+											<p>{{i.name}}</p>
+											<h4>{{i.price}} <span>$7.00</span></h4>
+										</div>
+										<div class="snipcart-details">
+
+													<a href="{% url 'cart' %}" ><input type="submit" name="submit" value="Add to cart" class="button"></a>
+
+
+										</div>
+									</div>
+								</figure>
+							</div>
+
+						</div>
+						</div>
+
+					</div>
+					{% endfor %}
+					<div class="clearfix"> </div>
+					<br>
+		 <center>
+    {% for p in pro.paginator.page_range %}
+
+
+      <a href="?page={{p}}" style="    background-color: white;
+    color: black;
+    border: 1px solid #04AA6D;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin-left: 20px; {% if pg.number == p %} active {% endif %}">{{p}} </a>
+         {% endfor %}
+    </center>
+		<br>
+				</div>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>Beverages</h6>
+					{% for i in prd1 %}
+					<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid_pos">
+								<img src="{% static 'images/tag.png'%}" alt=" " class="img-responsive" />
+							</div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block">
+										<div class="snipcart-thumb">
+											<a href="{{i.get_url}}"><img src="{{i.image.url}}" alt=" " class="img-responsive" /></a>
+											<p>{{i.name}}</p>
+											<h4>{{i.price}} <span>$7.00</span></h4>
+										</div>
+										<div class="snipcart-details">
+
+													<a href="{% url 'cart' %}" ><input type="submit" name="submit" value="Add to cart" class="button"></a>
+
+
+										</div>
+									</div>
+								</figure>
+							</div>
+
+						</div>
+						</div>
+
+					</div>
+					{% endfor %}
+					<div class="clearfix"> </div>
+					<center>
+					 {% for p in pro1.paginator.page_range %}
+
+
+      <a href="?page={{p}}" style="    background-color: white;
+    color: black;
+    border: 1px solid #04AA6D;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin-left: 20px; {% if pg.number == p %} active {% endif %}">{{p}} </a>
+         {% endfor %}
+    </center>
+		<br>
+				</div>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>Bread & backery</h6>
+					{% for i in prd2 %}
+					<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid_pos">
+								<img src="{% static 'images/tag.png'%}" alt=" " class="img-responsive" />
+							</div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block">
+										<div class="snipcart-thumb">
+											<a href="{{i.get_url}}"><img src="{{i.image.url}}" alt=" " class="img-responsive" /></a>
+											<p>{{i.name}}</p>
+											<h4>{{i.price}} <span>$7.00</span></h4>
+										</div>
+										<div class="snipcart-details">
+
+													<a href="{% url 'cart' %}" ><input type="submit" name="submit" value="Add to cart" class="button"></a>
+
+
+										</div>
+									</div>
+								</figure>
+							</div>
+
+						</div>
+						</div>
+
+					</div>
+					{% endfor %}
+					<div class="clearfix"> </div>
+ <center>
+					 {% for p in pro2.paginator.page_range %}
+
+
+      <a href="?page={{p}}" style="    background-color: white;
+    color: black;
+    border: 1px solid #04AA6D;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin-left: 20px; {% if pg.number == p %} active {% endif %}">{{p}} </a>
+         {% endfor %}
+    </center>
+		<br>
+				</div>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>vegetables</h6>
+					{% for i in prd3 %}
+					<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid_pos">
+								<img src="{% static 'images/tag.png'%}" alt=" " class="img-responsive" />
+							</div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block">
+										<div class="snipcart-thumb">
+											<a href="{{i.get_url}}"><img src="{{i.image.url}}" alt=" " class="img-responsive" /></a>
+											<p>{{i.name}}</p>
+											<h4>{{i.price}} <span>$7.00</span></h4>
+										</div>
+										<div class="snipcart-details">
+
+													<a href="{% url 'cart' %}" ><input type="submit" name="submit" value="Add to cart" class="button"></a>
+
+
+										</div>
+									</div>
+								</figure>
+							</div>
+
+						</div>
+						</div>
+
+					</div>
+						{% endfor %}
+					<div class="clearfix"> </div>
+					<center>
+					 {% for p in pro3.paginator.page_range %}
+
+
+      <a href="?page={{p}}" style="    background-color: white;
+    color: black;
+    border: 1px solid #04AA6D;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin-left: 20px; {% if pg.number == p %} active {% endif %}">{{p}} </a>
+         {% endfor %}
+    </center>
+		<br>
+				</div>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>Pet food</h6>
+					{% for i in prd4 %}
+					<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid_pos">
+								<img src="{% static 'images/tag.png'%}" alt=" " class="img-responsive" />
+							</div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block">
+										<div class="snipcart-thumb">
+											<a href="{{i.get_url}}"><img src="{{i.image.url}}" alt=" " class="img-responsive" /></a>
+											<p>{{i.name}}</p>
+											<h4>{{i.price}} <span>$7.00</span></h4>
+										</div>
+										<div class="snipcart-details">
+
+													<a href="{% url 'cart' %}" ><input type="submit" name="submit" value="Add to cart" class="button"></a>
+
+
+										</div>
+									</div>
+								</figure>
+							</div>
+
+						</div>
+						</div>
+
+					</div>
+							{% endfor %}
+					<div class="clearfix"> </div>
+					<center>
+					 {% for p in pro4.paginator.page_range %}
+
+
+      <a href="?page={{p}}" style="    background-color: white;
+    color: black;
+    border: 1px solid #04AA6D;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin-left: 20px; {% if pg.number == p %} active {% endif %}">{{p}} </a>
+         {% endfor %}
+    </center>
+		<br>
+				</div>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>fruits</h6>
+					{% for i in prd5 %}
+					<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid_pos">
+								<img src="{% static 'images/tag.png'%}" alt=" " class="img-responsive" />
+							</div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block">
+										<div class="snipcart-thumb">
+											<a href="{{i.get_url}}"><img src="{{i.image.url}}" alt=" " class="img-responsive" /></a>
+											<p>{{i.name}}</p>
+											<h4>{{i.price}} <span>$7.00</span></h4>
+										</div>
+											<div class="snipcart-details top_brand_home_details">
+											{% if i.stock <= 0 %}
+                    <h1 style="color:red;">OOOPS OUT OFSTOCK!</h1>
+                        {% else %}
+
+												<a href="{% url 'addcart' i.id %}"><input type="submit" name="submit" value="Add to cart" class="button" /></a>
+{% endif %}
+										</div>
+									</div>
+								</figure>
+							</div>
+
+						</div>
+						</div>
+
+					</div>
+					{% endfor %}
+					<div class="clearfix"> </div>
+					<center>
+					 {% for p in pro5.paginator.page_range %}
+
+
+      <a href="?page={{p}}" style="    background-color: white;
+    color: black;
+    border: 1px solid #04AA6D;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin-left: 20px; {% if pg.number == p %} active {% endif %}">{{p}} </a>
+         {% endfor %}
+    </center>
+		<br>
+				</div>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>Household</h6>
+					{% for i in prd6 %}
+					<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid_pos">
+								<img src="{% static 'images/tag.png'%}" alt=" " class="img-responsive" />
+							</div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block">
+										<div class="snipcart-thumb">
+											<a href="{{i.get_url}}"><img src="{{i.image.url}}" alt=" " class="img-responsive" /></a>
+											<p>{{i.name}}</p>
+											<h4>{{i.price}} <span>$7.00</span></h4>
+										</div>
+										<div class="snipcart-details">
+
+													<a href="{% url 'cart' %}" ><input type="submit" name="submit" value="Add to cart" class="button"></a>
+
+
+										</div>
+									</div>
+								</figure>
+							</div>
+
+						</div>
+						</div>
+
+					</div>
+							{% endfor %}
+					<div class="clearfix"> </div>
+					<center>
+					 {% for p in pro6.paginator.page_range %}
+
+
+      <a href="?page={{p}}" style="    background-color: white;
+    color: black;
+    border: 1px solid #04AA6D;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin-left: 20px; {% if pg.number == p %} active {% endif %}">{{p}} </a>
+         {% endfor %}
+    </center>
+		<br>
+				</div>
+				<div class="w3ls_w3l_banner_nav_right_grid1">
+					<h6>Kitchen</h6>
+					{% for i in prd7 %}
+					<div class="col-md-3 w3ls_w3l_banner_left">
+						<div class="hover14 column">
+						<div class="agile_top_brand_left_grid w3l_agile_top_brand_left_grid">
+							<div class="agile_top_brand_left_grid_pos">
+								<img src="{% static 'images/tag.png'%}" alt=" " class="img-responsive" />
+							</div>
+							<div class="agile_top_brand_left_grid1">
+								<figure>
+									<div class="snipcart-item block">
+										<div class="snipcart-thumb">
+											<a href="{{i.get_url}}"><img src="{{i.image.url}}" alt=" " class="img-responsive" /></a>
+											<p>{{i.name}}</p>
+											<h4>{{i.price}} <span>$7.00</span></h4>
+										</div>
+										<div class="snipcart-details">
+
+													<a href="{% url 'cart' %}" ><input type="submit" name="submit" value="Add to cart" class="button"></a>
+
+
+										</div>
+									</div>
+								</figure>
+							</div>
+
+						</div>
+						</div>
+
+					</div>
+					{% endfor %}
+					<div class="clearfix"> </div>
+					<center>
+					 {% for p in pro7.paginator.page_range %}
+
+
+      <a href="?page={{p}}" style="    background-color: white;
+    color: black;
+    border: 1px solid #04AA6D;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    margin-left: 20px; {% if pg.number == p %} active {% endif %}">{{p}} </a>
+         {% endfor %}
+    </center>
+		<br>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<!-- //banner -->
+
+<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="agile_footer_grids">
+				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
+					<div class="w3_footer_grid_bottom">
+						<h4>100% secure payments</h4>
+						<img src="{% static 'images/card.png'%}" alt=" " class="img-responsive" />
+					</div>
+				</div>
+				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
+					<div class="w3_footer_grid_bottom">
+						<h5>connect with us</h5>
+						<ul class="agileits_social_icons">
+							<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="wthree_footer_copy">
+				<p>© PP store</p>
+			</div>
+		</div>
+	</div>
+<!-- //footer -->
+
+
+
+{% endblock %}

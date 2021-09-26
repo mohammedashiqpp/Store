@@ -1,0 +1,195 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% block content %}
+<!-- products-breadcrumb -->
+	<div class="products-breadcrumb">
+		<div class="container">
+			<ul>
+				<li><i class="fa fa-home" aria-hidden="true"></i><a href="/">Home</a><span>|</span></li>
+				<li>Checkout</li>
+			</ul>
+		</div>
+	</div>
+<!-- //products-breadcrumb -->
+<!-- banner -->
+	<div class="banner">
+		<div class="w3l_banner_nav_left">
+			<nav class="navbar nav_bottom">
+			 <!-- Brand and toggle get grouped for better mobile display -->
+			  <div class="navbar-header nav_2">
+				  <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse" data-target="#bs-megadropdown-tabs">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+			   </div> 
+			   <!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+					<ul class="nav navbar-nav nav_1">
+						<li><a href="{% url 'product' %}">All product</a></li>
+						{% for i in cat %}
+						<li><a href="{{i.get_url}}">{{i.name}}</a></li>
+						{% endfor %}
+
+					</ul>
+				 </div><!-- /.navbar-collapse -->
+			</nav>
+		</div>
+		<div class="w3l_banner_nav_right">
+<!-- about -->
+		<div class="privacy about">
+			<h3>Chec<span>kout</span></h3>
+			
+	      <div class="checkout-right">
+					<h4>Your shopping cart contains: <span></span></h4>
+				<table class="timetable_sub">
+					<thead>
+						<tr>
+							<th>SL No.</th>	
+							<th>Product</th>
+							<th>Quality</th>
+							<th>Product Name</th>
+						
+							<th>Price</th>
+							<th>Remove</th>
+						</tr>
+					</thead>
+
+					<tbody><tr class="rem1">
+							{% for i in ci %}
+						<td class="invert">{{forloop.counter}}</td>
+						<td class="invert-image"><a href="{{i.proud.grt_url}}"><img src="{{i.proud.image.url}}" alt=" " class="img-responsive"></a></td>
+						<td class="invert">
+							 <div class="quantity"> 
+								<div class="quantity-select">                           
+									<a href="{% url 'minusitem' i.proud.id %}"><div class="entry value-minus">&nbsp;</div></a>
+									<div class="entry value"><span>{{i.qulity}}</span></div>
+
+									<a href="{% url 'addcart' i.proud.id %}"><div class="entry value-plus active">&nbsp;</div></a>
+								</div>
+							</div>
+						</td>
+						<td class="invert">{{i.proud.name}}</td>
+						
+						<td class="invert"> RS {{i.total}}</td>
+						<td class="invert">
+							<div class="rem">
+								<a href="{% url 'delete' i.proud.id %}"><div class="close1"> </div></a>
+							</div>
+
+						</td>
+					</tr>
+{% endfor %}
+				</tbody></table>
+			</div>
+			<div class="checkout-left">	
+				<div class="col-md-4 checkout-left-basket">
+					<h4>Continue to basket</h4>
+
+						{% for i in ci %}
+						<p style="list-style-type: none;margin-bottom: 1em;font-size: 14px;color: #999;">{{i.proud.name}} <i>-</i> <span style="float: right;">RS {{i.total}}</span></p>
+
+						{% endfor %}
+						<p style="list-style-type: none;margin-bottom: 1em;font-size: 14px;color: #999;">Total Service Charges <i>-</i> <span style="float: right;"> RS 15.00</span></p>
+
+						<b style="font-size: 1em;color: #212121;font-weight: 600;padding: 1em 0;border-top: 1px solid #DDD;border-bottom: 1px solid #DDD;margin: 2em 0 0;">Total <i>-</i> <span style="float: right;">RS {{tot}}</span></b>
+
+
+
+				</div>
+
+				<div class="col-md-8 address_form_agile">
+					  <h4>Add a new Details</h4>
+				<form action="payment" method="post" class="creditly-card-form agileinfo_form">
+					{% csrf_token %}
+									<section class="creditly-wrapper wthree, w3_agileits_wrapper">
+										<div class="information-wrapper">
+											<div class="first-row form-group">
+												<div class="controls">
+													<label class="control-label">Full name: </label>
+													<input class="billing-address-name form-control" type="text" name="name" placeholder="Full name">
+												</div>
+												<div class="w3_agileits_card_number_grids">
+													<div class="w3_agileits_card_number_grid_left">
+														<div class="controls">
+															<label class="control-label">Mobile number:</label>
+														    <input class="form-control" type="text" name="phoneno" placeholder="Mobile number">
+														</div>
+													</div>
+													<div class="w3_agileits_card_number_grid_right">
+														<div class="controls">
+															<label class="control-label">Landmark: </label>
+														 <input class="form-control" name="landmark" type="text" placeholder="Landmark">
+														</div>
+													</div>
+													<div class="clear"> </div>
+												</div>
+												<div class="controls">
+													<label class="control-label">Town/City: </label>
+												 <input class="form-control" type="text" name="city" placeholder="Town/City">
+												</div>
+													<div class="controls">
+															<label class="control-label">Address type: </label>
+												     <select class="form-control option-w3ls">
+																							<option>Office</option>
+																							<option>Home</option>
+																							<option>Commercial</option>
+							
+																					</select>
+													</div>
+											</div>
+											<button class="submit check_out">Delivery to this Address</button>
+										</div>
+									</section>
+								</form>
+									<div class="checkout-right-basket">
+				        	<a href="{% url 'payment' %}">Make a Payment <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+			      	</div>
+					</div>
+			
+				<div class="clearfix"> </div>
+				
+			</div>
+
+		</div>
+<!-- //about -->
+		</div>
+		<div class="clearfix"></div>
+	</div>
+<!-- //banner -->
+
+
+
+<!-- footer -->
+	<div class="footer">
+		<div class="container">
+			<div class="clearfix"> </div>
+			<div class="agile_footer_grids">
+				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
+					<div class="w3_footer_grid_bottom">
+						<h4>100% secure payments</h4>
+						<img src="{%static 'images/card.png'%}" alt=" " class="img-responsive" />
+					</div>
+				</div>
+				<div class="col-md-3 w3_footer_grid agile_footer_grids_w3_footer">
+					<div class="w3_footer_grid_bottom">
+						<h5>connect with us</h5>
+						<ul class="agileits_social_icons">
+							<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+							<li><a href="#" class="dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="wthree_footer_copy">
+				<p>© PP store</p>
+			</div>
+		</div>
+	</div>
+<!-- //footer -->
+{% endblock %}
